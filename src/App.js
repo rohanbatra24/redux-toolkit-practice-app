@@ -1,4 +1,6 @@
 import React from 'react'
+
+import { useSelector } from 'react-redux'
 import {
   BrowserRouter as Router,
   Switch,
@@ -9,6 +11,8 @@ import {
 import { Navbar } from './app/Navbar'
 
 function App() {
+  const posts = useSelector((state) => state.posts)
+
   return (
     <Router>
       <Navbar />
@@ -20,6 +24,9 @@ function App() {
             render={() => (
               <section>
                 <h2>Welcome to the Redux Essentials example app!</h2>
+                {posts.map((post) => (
+                  <h1>{post.title}</h1>
+                ))}
               </section>
             )}
           />
